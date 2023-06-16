@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway&display=swap');
+*{
+  font-family: 'Raleway', sans-serif;
+  color: white;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 29px;
+}
+
+.list{
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin-top: 10px;
+  margin-left: 10px;
+
+  input{
+    position: absolute;
+    left: 39.5%;
+  }
+
+  &__options{
+    position: absolute;
+    left: 65%;
+  }
+
+  &__img{
+    height: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+}
