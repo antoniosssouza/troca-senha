@@ -1,14 +1,17 @@
-import React from "react";
-import { Router } from "react-router";
+import React from 'react'
+import Header from './components/Header/Header'
+import "./App.scss"
+import Tasks from './components/Tasks/Tasks'
+import { db } from './db'
 
-//utilizar esse mockup como exemplo
-
-function App() {
+const App = () => {
   return (
-    <div className="App" >
-      <Router />
-    </div>
+    <>
+      <Header />
+      <h1>Otimize seu tempo e se organize com o nosso Planejador Diário.</h1>
+      <Tasks dados={ db } />
+    </>
   );
 }
 
-export default App;
+export default App

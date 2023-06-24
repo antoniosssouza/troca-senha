@@ -4,6 +4,7 @@ import pencil from '../../assets/pencil.svg'
 import bin from '../../assets/bin.svg'
 import plus from '../../assets/plus.svg'
 
+
 const Tasks = ({dados}) => {
   const [tasks, setTasks] = useState(dados);
   const [newTask, setNewTask] = useState('');
@@ -25,6 +26,7 @@ const Tasks = ({dados}) => {
   };
 
   const handleTaskEdit = (taskId) => {
+    {console.log(taskId)};
     const taskToEdit = tasks.find((task) => task.id === taskId);
     setEditingTask(taskToEdit);
     setEditedTitle(taskToEdit.title);
@@ -62,10 +64,11 @@ const Tasks = ({dados}) => {
       description: '',
       completed: false,
     };
-    setTasks([...tasks, newTaskObj]);
-    setNewTask('');
+    if (newTask.length >= 3){
+      setTasks([...tasks, newTaskObj]);
+      setNewTask('');
+    }
   };
-
 
   const handleTaskDelete = (taskId) => {
     setTaskToDelete(taskId);
@@ -85,17 +88,26 @@ const Tasks = ({dados}) => {
   };
 
   return (
-    <div>
+    <section>
+      <div className="tasks">
+        <h2 className="tasks__title">Tarefas</h2>
+        <h2 className="tasks__status">Status</h2>
+        <h2 className="tasks__options">Opções</h2>
+      </div>
+      <hr />
       {
         tasks.map(task => (
           <div className='list content' key={task.id}>
             <h3>{task.title}</h3>
-            <input 
-              type="checkbox" 
-              checked={task.completed} 
-              className="list__status" 
-              onChange={() => handleCheckboxChange(task.id)}
-            />
+            <label>
+              <input 
+                type="checkbox" 
+                checked={task.completed} 
+                className="list__status" 
+                onChange={() => handleCheckboxChange(task.id)}
+              />
+              <span><img src="" alt="" /></span>
+            </label>
             <div className="list__options">
               <img src={pencil} alt="edit" className="list__img" onClick={() => handleTaskEdit(task.id)}/>
               <img src={bin} alt="delete" className="list__img" onClick={() => handleTaskDelete(task.id)}/>
@@ -103,6 +115,9 @@ const Tasks = ({dados}) => {
           </div>
         ))
       }
+      <div className="addSection">
+        <input type="text" value={newTask} placeholder='Adicionar tarefa...' onChange={(event) => setNewTask(event.target.value)}/><img src={plus} alt="add" onClick={handleAddTask}/>
+      </div>
       {editingTask && (
           <div className='editingBox modal'>
             <h2>Editar Tarefa</h2>
@@ -141,7 +156,7 @@ const Tasks = ({dados}) => {
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }
 

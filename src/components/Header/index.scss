@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway&display=swap');
-
+@use '../../scss/variables' as *;
+ 
 header{
-  background-color: #0C70F2;
+  background-color: $color-ascent;
   height: 75px;
   display: flex;
   flex-direction: row;
@@ -10,8 +10,8 @@ header{
 
 
   button{
-    color: white;
-    background-color: #0C70F2;
+    color: $color-light;
+    background-color: $color-ascent;
     height: 55px;
     cursor: pointer;
     border: none;
@@ -26,8 +26,8 @@ header{
   }
 
   button:hover{
-    background-color: white;
-    color: #0C70F2;
+    background-color: $color-light;
+    color: $color-ascent;
     transition: .3s;
   }
 
